@@ -5,6 +5,7 @@ from io import BytesIO
 from PIL import Image
 import numpy as np
 import tensorflow as tf
+from tensorflow.keras.applications.mobilenet_v3 import preprocess_input
 
 app = FastAPI()
 
@@ -21,7 +22,7 @@ app.add_middleware(
     allow_headers = ["*"]
 )
 
-MODEL = tf.keras.models.load_model("saved_models/1.keras")
+MODEL = tf.keras.models.load_model("saved_models/mobilenetv3_model.keras", custom_objects={'preprocess_input': preprocess_input})
 
 CLASS_NAMES = ["Alovera", "Bamboo", "Chilly", "Eucalyptus", "Guava", "Hibiscus", "Jackfruit"]
 
