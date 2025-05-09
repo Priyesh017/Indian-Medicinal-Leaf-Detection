@@ -11,7 +11,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost",
-    "http://localhost:3000"
+    "http://localhost:5173"
 ]
 
 app.add_middleware(
@@ -22,7 +22,7 @@ app.add_middleware(
     allow_headers = ["*"]
 )
 
-MODEL = tf.keras.models.load_model("saved_models/mobilenetv3_model.keras", custom_objects={'preprocess_input': preprocess_input})
+MODEL = tf.keras.models.load_model("saved_models/mobilenetv3_model_high_accuracy.keras", custom_objects={'preprocess_input': preprocess_input})
 
 CLASS_NAMES = ["Alovera", "Bamboo", "Chilly", "Eucalyptus", "Guava", "Hibiscus", "Jackfruit"]
 
